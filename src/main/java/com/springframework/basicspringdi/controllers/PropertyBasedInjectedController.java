@@ -7,7 +7,6 @@ public class PropertyBasedInjectedController {
     public GreetingService greetingService;
 
     public String getGreeting() {
-
         return greetingService.sayGreeting();
     }
 
