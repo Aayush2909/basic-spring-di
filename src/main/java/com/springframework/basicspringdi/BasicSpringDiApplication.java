@@ -30,6 +30,10 @@ public class BasicSpringDiApplication {
         GreetingController greetingController = (GreetingController) ctx.getBean("greetingController");
         System.out.println(greetingController.getGreeting());
 
+        System.out.println("\n--------- Multi-lingual --------");
+        I18nGreetingController  i18nGreetingController = (I18nGreetingController) ctx.getBean("i18nGreetingController");
+        System.out.println(i18nGreetingController.getGreeting());
+
     }
 
 }
