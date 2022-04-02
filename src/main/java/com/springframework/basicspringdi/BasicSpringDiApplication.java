@@ -1,9 +1,6 @@
 package com.springframework.basicspringdi;
 
-import com.springframework.basicspringdi.controllers.ConstructorBasedInjectedController;
-import com.springframework.basicspringdi.controllers.MyController;
-import com.springframework.basicspringdi.controllers.PropertyBasedInjectedController;
-import com.springframework.basicspringdi.controllers.SetterBasedInjectedController;
+import com.springframework.basicspringdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -28,6 +25,10 @@ public class BasicSpringDiApplication {
         System.out.println("\n--------- Constructor Based ---------");
         ConstructorBasedInjectedController constructorBasedInjectedController = (ConstructorBasedInjectedController) ctx.getBean("constructorBasedInjectedController");
         System.out.println(constructorBasedInjectedController.getGreeting());
+
+        System.out.println("\n--------- Primary ----------");
+        GreetingController greetingController = (GreetingController) ctx.getBean("greetingController");
+        System.out.println(greetingController.getGreeting());
 
     }
 
