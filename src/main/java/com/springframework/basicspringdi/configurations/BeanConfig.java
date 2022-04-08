@@ -6,6 +6,8 @@ import com.springframework.basicspringdi.implementations.I18nHindiGreetingImpl;
 import com.springframework.basicspringdi.implementations.I18nJapaneseGreetingImpl;
 import com.springframework.basicspringdi.implementations.PropertyInjectedGreetingImpl;
 import com.springframework.basicspringdi.implementations.SetterInjectedGreetingImpl;
+import com.springframework.basicspringdi.repositories.EnglishGreetingRepository;
+import com.springframework.basicspringdi.repositories.EnglishGreetingRepositoryImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -28,10 +30,15 @@ public class BeanConfig {
         return new PropertyInjectedGreetingImpl();
     }
 
+    @Bean
+    EnglishGreetingRepositoryImpl englishGreetingRepositoryImpl() {
+        return new EnglishGreetingRepositoryImpl();
+    }
+
     @Bean("i18nService")
     @Profile("ENG")
-    I18nEnglishGreetingImpl i18nEnglishGreeting() {
-        return new I18nEnglishGreetingImpl();
+    I18nEnglishGreetingImpl i18nEnglishGreeting(EnglishGreetingRepository englishGreetingRepository) {
+        return new I18nEnglishGreetingImpl(englishGreetingRepository);
     }
 
     @Bean("i18nService")
