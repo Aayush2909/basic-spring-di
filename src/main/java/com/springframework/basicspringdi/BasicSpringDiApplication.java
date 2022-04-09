@@ -1,6 +1,12 @@
 package com.springframework.basicspringdi;
 
-import com.springframework.basicspringdi.controllers.*;
+import com.springframework.basicspringdi.controllers.ConstructorBasedInjectedController;
+import com.springframework.basicspringdi.controllers.GreetingController;
+import com.springframework.basicspringdi.controllers.I18nGreetingController;
+import com.springframework.basicspringdi.controllers.MyController;
+import com.springframework.basicspringdi.controllers.PetController;
+import com.springframework.basicspringdi.controllers.PropertyBasedInjectedController;
+import com.springframework.basicspringdi.controllers.SetterBasedInjectedController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -33,6 +39,10 @@ public class BasicSpringDiApplication {
         System.out.println("\n--------- Multi-lingual --------");
         I18nGreetingController  i18nGreetingController = (I18nGreetingController) ctx.getBean("i18nGreetingController");
         System.out.println(i18nGreetingController.getGreeting());
+
+        PetController petController = ctx.getBean("petController", PetController.class);
+        System.out.println("--- The Best Pet is ---");
+        System.out.println(petController.getBestPet());
 
     }
 
